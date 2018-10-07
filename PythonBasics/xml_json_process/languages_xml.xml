@@ -1,0 +1,12 @@
+<languages description = "software">
+	<language title = "Java">
+	   <type>OOPs</type>
+	   <vm>JVM</vm>
+	   <framework> Spring,Struts </framework>
+	</language>
+	<language title = "Python">
+	   <type>functional,OOP</type>
+	   <vm>PVM</vm>
+	   <framework> Django,Flask </framework>
+	</language>
+</languages>
