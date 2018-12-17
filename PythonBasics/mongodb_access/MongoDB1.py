@@ -83,8 +83,17 @@ except pymongo.errors.DuplicateKeyError as dke:
     print("ERROR:")
     print(dke)
     print()
-except pymongo.errors.BulkWriteError as bwe:
+except pymongo.errors.ServerSelectionTimeoutError as bwe:
     print("ERROR:")
     print(bwe)
+    print()
+except pymongo.errors.BulkWriteError as bwe:
+    print("ERROR:")
+    # For duplicate ids
+    print(bwe)
+    print()
+except pymongo.errors.ServerSelectionTimeoutError as sste:
+    print("ERROR:")
+    print(sste)
     print()
 
