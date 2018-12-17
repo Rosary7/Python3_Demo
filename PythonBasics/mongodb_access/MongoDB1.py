@@ -25,8 +25,14 @@ MongoDB Basics:
 
 "PyMongo“ Driver:
     In this demo we will use the MongoDB driver "PyMongo“
-    We can use PIP to install "PyMongo“ driver
+    We can use PIP to install "PyMongo“ driver:
     E.g.: C:\Python\Python36-32\Scripts> python -m pip install pymongo
+ 
+To access with IP for MongoDB4 server version:
+steps: (open 2 consoles and type)
+C:\Program Files\MongoDB\Server\4.0\bin>mongod --bind_ip <IP address>
+C:\Program Files\MongoDB\Server\4.0\bin>mongo
+
 
 """
 
@@ -59,6 +65,7 @@ except pymongo.errors.DuplicateKeyError as dke:
 # Insert many documents
 try:
     myMongodbClient = pymongo.MongoClient("mongodb://localhost:27017/")
+    #myMongodbClient = pymongo.MongoClient("mongodb://<IP Address>:27017/")
     myMongodb = myMongodbClient["mydatabase"]
     myCollection = myMongodb["customers"]
     # If an '_id' field is not provided,then MongoDB will assign a unique _id for each document(s)
