@@ -12,35 +12,37 @@ try:
     myCollection = myMongodb["customers"]
 
     # Find the first document in the customers collection
+    print()
+    print('Find the first document in the customers collection')
     x = myCollection.find_one()
     print(x)
     print()
 
-    # Loop allcustomers collection
+    # Loop all customers collection
+    print('Loop all customers collection')
     for x in myCollection.find():
         print(x)
 
-    # Return except 'ids'
+    # Return all except 'ids'
     print()
+    print('FReturn all except ids')
     for x in myCollection.find({},{ "_id": 0, "name": 1, "address": 1 }):
         print(x)
-
-    # Find document(s) with the address "Park Lane Bengaluru4":
-
 
     # Find document(s) with the address starts with the char "C" or higher (alphabetically):
     myQuery = { "address": { "$gt": "C" } }
     myDocument = myCollection.find(myQuery)
     print()
+    print('Find document(s) with the address starts with the char "C"')
     for x in myDocument:
       print(x)
 
     # Sort
     # sort("name", 1)  - ascending
     # sort("name", -1) - descending
-    myQuery = {"address": {"$gt": "C"}}
-    myDocument = myCollection.find().sort("name", -1)
+    myDocument = myCollection.find().sort("name", 1)
     print()
+    print('Sort by name:')
     for x in myDocument:
         print(x)
 
