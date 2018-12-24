@@ -1,5 +1,3 @@
-# XML processing with - DOM API
-
 from xml.dom.minidom import parse
 import xml.dom.minidom
 
