@@ -103,6 +103,27 @@ class DB:
         finally:
             oracleCursor.close
 
+    def insertBatch(self):
+        """ DML """
+        SQL = "INSERT INTO EMP (empNo, empName, empAddress) VALUES(:1, :2, :3)"
+        data = [
+            (601,'Maria', 'India' ),
+            (602, 'Vicky', 'France'),
+            (603, 'Pio', 'Singapore')
+        ]
+        try:
+            oracleCursor = self.__oracleConnection.cursor()
+            oracleCursor.prepare(SQL)
+            oracleCursor.executemany(None, data)
+            oracleCursor.execute('COMMIT') # Commit
+            print('3 rows inserted.')
+            print()
+        except cx_Oracle.DatabaseError as de:
+            print("Oracle exception............: ", de)
+            print()
+        finally:
+            oracleCursor.close
+
 if __name__ == "__main__":
     try:
         print("Entering main..")
@@ -111,8 +132,10 @@ if __name__ == "__main__":
         #db.insertData()
         db.readAllData()
         db.updateRow('Canada1', 100)
+        db.insertBatch()
+
         db.readAllData()
         db.readOneRow({'name': 'Peter'})
     except cx_Oracle.DatabaseError as de:
-        print('Database error:',de);
+        print('Database error:',de)
 
